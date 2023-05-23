@@ -12,39 +12,45 @@ import java.util.List;
 @RestController
 public class UserController implements CoreController {
 
-@GetMapping(value = "/user", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity<Response<UserResponse>> getUser(){
-    UserResponse userResponse = new UserResponse();
-    User user = new User();
-    user.setUsername("olawale");
-    user.setFirstName("James");
-    user.setLastName("Ogunde");
-    user.setAddress("14 North Troy Street");
-    user.setAuthorized(true);
-    user.setEmail("olawale@yahoo.com");
-    user.setPhone("319-825-700");
-    List<User> u = new ArrayList<>();
-    u.add(user);
-    u.add(user);
-    u.add(user);
-    userResponse.setUser(u);
-    return invokeService( () -> {
-        return userResponse;
-    });
-}
+    @GetMapping(value = "/user", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public ResponseEntity<Response<UserResponse>> getUser() {
+        UserResponse userResponse = new UserResponse();
+        User user = new User();
+        user.setUsername("olawale");
+        user.setFirstName("James");
+        user.setLastName("Ogunde");
+        user.setAddress("14 North Troy Street");
+        user.setAuthorized(true);
+        user.setEmail("olawale@yahoo.com");
+        user.setPhone("319-825-700");
+        List<User> u = new ArrayList<>();
+        u.add(user);
+        u.add(user);
+        u.add(user);
+        userResponse.setUser(u);
+        return invokeService(() -> {
+            return userResponse;
+        });
+    }
 
     @GetMapping("/books")
-    public ResponseEntity<Response<UserResponse>> getBook(){
+    public ResponseEntity<Response<UserResponse>> getBook() {
         UserResponse userResponse = new UserResponse();
         userResponse.setBooks(Book.getBooks());
-        return invokeService( () -> userResponse);
+        return invokeService(() -> userResponse);
     }
 
     @GetMapping("/books/1")
-    public ResponseEntity<Response<UserResponse>> getBookOne(){
+    public ResponseEntity<Response<UserResponse>> getBookOne() {
         UserResponse userResponse = new UserResponse();
         userResponse.setBooks(Book.getBooks());
-        return invokeService( () -> userResponse);
+        return invokeService(() -> userResponse);
     }
 
+    @GetMapping("/books/2")
+    public ResponseEntity<Response<UserResponse>> getBookTwo() {
+        UserResponse userResponse = new UserResponse();
+        userResponse.setBooks(Book.getBooks());
+        return invokeService(() -> userResponse);
+    }
 }
