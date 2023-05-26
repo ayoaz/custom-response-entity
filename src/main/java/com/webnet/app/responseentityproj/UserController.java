@@ -56,7 +56,7 @@ public class UserController implements CoreController {
     }
 
     @GetMapping("/books/4")
-    public ResponseEntity<Response<UserResponse>> getBookFourEdited(){
+    public ResponseEntity<Response<UserResponse>> getBookFourEdit(){
         UserResponse userResponse = new UserResponse();;
         userResponse.setBooks(Book.getBooks());
         return invokeService( () -> {
